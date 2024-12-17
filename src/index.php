@@ -1,8 +1,7 @@
 <?php
-
 error_reporting(E_ERROR);
 
-require_once '../vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 if (preg_match('/\.(?:png|jpg|jpeg|gif|ico|js|css)$/', $_SERVER["REQUEST_URI"])) {
     return false;
@@ -15,6 +14,7 @@ $route = $routes[$url];
 
 if (!$route or $routes['httpMethod'] != $_SERVER['REQUEST_METHOD']) {
     http_response_code(404);
+    echo "Страница не найдена";
     return false;
 }
 

@@ -34,7 +34,7 @@ class TaskRepository
                 dueDate: new DateTime($row['dueDate']),
                 createdAt: new DateTime($row['createdAt']),
                 description: $row['description'],
-                executedAt: new DateTime($row['executedAt']),
+                executedAt: new DateTime($row['executedAt'])
             );
         }
 
@@ -54,7 +54,7 @@ class TaskRepository
             ':dueDate' => $task->dueDate->format('Y-m-d H:i:s'),
             ':createdAt' => $task->createdAt->format('Y-m-d H:i:s'),
             ':description' => $task->description,
-            ':executedAt' => $task->executedAt->format('Y-m-d H:i:s'),
+            ':executedAt' => $task->executedAt->format('Y-m-d H:i:s')
         ]);
     
         return (int)$this->db->connection()->lastInsertId();
@@ -80,7 +80,7 @@ class TaskRepository
             ':dueDate' => $task->dueDate->format('Y-m-d H:i:s'),
             ':createdAt' => $task->createdAt->format('Y-m-d H:i:s'),
             ':description' => $task->description,
-            ':executedAt' => $task->executedAt->format('Y-m-d H:i:s'),
+            ':executedAt' => $task->executedAt->format('Y-m-d H:i:s')
         ]);
     }
 

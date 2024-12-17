@@ -13,11 +13,15 @@ class Database
         $connection = self::$connection;
 
         if (!$connection) {
-            $connection = new PDO(
+/*             $connection = new PDO(
                 'mysql:host=mysql-8.2;port=3306;dbname=mvc',
                 'root'
+            ); */
+            $connection = new PDO(
+                dsn: "mysql:host=mysql-8.2;dbname=mvc;charset=utf8",
+                username: "root",
+                password: "",
             );
-
             self::$connection = $connection;
         }
 
