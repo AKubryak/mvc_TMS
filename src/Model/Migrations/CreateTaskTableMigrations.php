@@ -20,7 +20,7 @@ class CreateTaskTableMigrations
             dueDate DATETIME NOT NULL,
             status INT NOT NULL DEFAULT 0,
             createAt DATETIME NOT NULL DEFAULT now(),
-            executedAt DATETIME NULL,
+            executedAt DATETIME NULL
         )');
     }
 
