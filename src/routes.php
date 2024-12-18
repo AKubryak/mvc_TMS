@@ -24,6 +24,11 @@ return [
         'method' => 'update',
         'httpMethod' => 'POST',
     ],
+    '/update/{id}' => [
+        'controller' => HomeController::class,
+        'method' => 'updateView',
+        'httpMethod' => 'GET',
+    ],
 /*     '/api/tasks' => [
         'controller' => TaskController::class,
         'method' => 'getAll',
