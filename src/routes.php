@@ -30,20 +30,4 @@ return [
         'httpMethod' => 'GET',
         'regex' => '#^/update/([1-9][0-9]*)$#',
     ],
-/*     '/api/tasks' => [
-        'controller' => TaskController::class,
-        'method' => 'getAll',
-        'httpMethod' => 'GET',
-    ],
-    '/api/task' => [
-        'controller' => TaskController::class,
-        'method' => 'create',
-        'httpMethod' => 'POST',
-    ],
-    '/api/task/{id}' => [
-        'controller' => TaskController::class,
-        'method' => 'get',
-        'httpMethod' => 'GET',
-        'regex' => '#/api/task/([1-9]+)#',
-    ], */
 ];

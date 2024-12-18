@@ -2,23 +2,32 @@
 error_reporting(E_ERROR);
 
 require_once __DIR__ . '/../vendor/autoload.php';
+require_once 'Router.php';
 
 if (preg_match('/\.(?:png|jpg|jpeg|gif|ico|js|css)$/', $_SERVER["REQUEST_URI"])) {
     return false;
 }
 
 $url = $_SERVER['REQUEST_URI'];
+$method = $_SERVER['REQUEST_METHOD'];
 $routes = require_once 'routes.php';
 
-$route = $routes[$url];
+$router = new Router();
+$route = $router->parse($routes, $url, $method);
 
-if (!$route or $route['httpMethod'] != $_SERVER['REQUEST_METHOD']) {
+if (!$route) {
     http_response_code(404);
     echo "Страница не найдена";
     return false;
 }
 
 $controller = new $route['controller'];
+
+if (!empty($route['args'])) {
+    $response = $controller->{$route['method']}(...$route['args']);
+} else {
+    $response = $controller->{$route['method']}();
+}
 
 $response = $controller->{$route['method']}();
 

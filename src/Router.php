@@ -4,7 +4,6 @@ class Router
 {
     public function parse(array $routes, string $url, string $method): array
     {
-        $result = [];
         $url = rtrim($url, '/');
 
         foreach ($routes as $routeUrl => $routeData) {
@@ -14,32 +13,26 @@ class Router
 
             if (isset($routeData['regex'])) {
                 $match = [];
-                $isMatch = preg_match_all($url, $routeData['regex'], $match);
-
-                if ($isMatch) {
+                if (preg_match($routeData['regex'], $url, $match)) {
                     unset($match[0]);
 
-                    $result = [
+                    return [
                         'controller' => $routeData['controller'],
                         'method' => $routeData['method'],
-                        'args' => array_merge(...$match),
+                        'args' => array_values($match),
                     ];
-
-                    break;
                 }
             } else {
                 if ($routeUrl == $url) {
-                    $result = [
+                    return [
                         'controller' => $routeData['controller'],
                         'method' => $routeData['method'],
                         'args' => [],
                     ];
-
-                    break;
                 }
-            };
-
-            return $result;
+            }
         }
+
+        return [];
     }
 }
