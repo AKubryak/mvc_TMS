@@ -6,6 +6,17 @@ use Model\Models\TaskModel;
  * @var array<TaskModel> $tasks
  */
 
+function getTaskBackgroundColor(TaskModel $task): string
+{
+    if ($task->status == 1) {
+        return 'green';
+    }
+    if ($task->dueDate->getTimestamp() < time()) {
+        return 'red';
+    }
+    return 'white';
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -89,15 +100,7 @@ use Model\Models\TaskModel;
                 <th></th>
             </tr>
             <?php foreach ($tasks as $task):
-
-                $background = 'white';
-
-                if ($task->status == 1) {
-                    $background = 'green';
-                } else if ($task->dueDate->getTimestamp() < time()) {
-                    $background = 'red';
-                }
-
+                $background = getTaskBackgroundColor($task);
             ?>
                 <tr style="background-color: <?= $background ?>">
                     <td><?= $task->id ?></td>
