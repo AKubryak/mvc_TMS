@@ -12,7 +12,7 @@ $routes = require_once 'routes.php';
 
 $route = $routes[$url];
 
-if (!$route or $routes['httpMethod'] != $_SERVER['REQUEST_METHOD']) {
+if (!$route or $route['httpMethod'] != $_SERVER['REQUEST_METHOD']) {
     http_response_code(404);
     echo "Страница не найдена";
     return false;

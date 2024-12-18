@@ -28,6 +28,7 @@ return [
         'controller' => HomeController::class,
         'method' => 'updateView',
         'httpMethod' => 'GET',
+        'regex' => '#^/update/([1-9][0-9]*)$#',
     ],
 /*     '/api/tasks' => [
         'controller' => TaskController::class,
