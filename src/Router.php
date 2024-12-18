@@ -4,7 +4,7 @@ class Router
 {
     public function parse(array $routes, string $url, string $method): array
     {
-        $url = rtrim($url, '/');
+        // $url = rtrim($url, '/');
 
         foreach ($routes as $routeUrl => $routeData) {
             if ($routeData['httpMethod'] != $method) {

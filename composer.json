@@ -2,11 +2,6 @@
     "name": "kubryak/mvc_example",
     "type": "web-app",
     "license": "MIT",
-    "autoload": {
-        "psr-4": {
-            "Kubryak\\MvcExample\\": "src/"
-        }
-    },
     "authors": [
         {
             "name": "Aleksey Kubryak",

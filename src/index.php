@@ -1,4 +1,5 @@
 <?php
+
 error_reporting(E_ERROR);
 
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -10,7 +11,8 @@ if (preg_match('/\.(?:png|jpg|jpeg|gif|ico|js|css)$/', $_SERVER["REQUEST_URI"]))
 
 $url = $_SERVER['REQUEST_URI'];
 $method = $_SERVER['REQUEST_METHOD'];
-$routes = require_once 'routes.php';
+
+$routes = include 'routes.php';
 
 $router = new Router();
 $route = $router->parse($routes, $url, $method);
